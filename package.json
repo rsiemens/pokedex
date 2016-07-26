@@ -1,0 +1,27 @@
+{
+  "name": "pokedex",
+  "version": "0.0.1",
+  "description": "Pokemon GO Pokedex",
+  "main": "src/js/app.js",
+  "scripts": {
+    "build": "gulp clean && gulp build",
+    "start": "gulp clean && gulp dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-es2015": "^6.9.0",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^4.2.0",
+    "gulp-uglify": "^1.5.4",
+    "webpack-stream": "^3.2.0"
+  },
+  "dependencies": {
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
+  }
+}

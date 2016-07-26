@@ -1,0 +1,24 @@
+# Compiled Python files
+*.pyc
+# PyCharm project config
+.idea/
+# Vagrant working files
+.vagrant/
+# Grunt working files
+.grunt/
+# py.test cache
+.cache/
+# Vim cruft
+*.swp
+*.swo
+# Virtualenvs
+venv/
+# Node/npm
+node_modules/
+npm-debug.log
+# OSX
+.DS_Store
+
+# Project specific
+www/*
+platform/ios/www/*
