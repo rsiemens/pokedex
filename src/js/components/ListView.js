@@ -25,7 +25,7 @@ const ListView = React.createClass({
    * @param {Object} evt Event object
    */
   searchHandler (evt) {
-    this.setState({searchQuery: evt.target.value});
+    this.setState({searchQuery: evt.target.value.toLowerCase()});
   },
 
   getInitialState () {

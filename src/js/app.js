@@ -34,15 +34,20 @@ function startApp () {
   ), el);
 }
 
-if (window.cordova) {  // were on a device
+if (window.cordova) {  // we're on a device
+
+  window.onerror = function (errorMsg, url, lineNumber) {
+    alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
+  };
+
   /*
    * MAIN EVENT LISTENER FOR CORDOVA
    * This event fires once cordova has fully loaded. Once this event has fired
    * you can safely make calls to Cordova APIs.
    */
   document.addEventListener('deviceready', () => {
-    startApp();
-  });
+		startApp();
+  }, false);
 } else {  // browser
   startApp();
 }

@@ -1,7 +1,7 @@
 #Pokedex App
 
 Exploring various javascript frameworks/libraries to use for building hybrid apps
-with Cordova. Similar idea as [todoMVC](https://github.com/tastejs/todomvc), but
+with [Cordova](https://cordova.apache.org/). Similar idea as [todoMVC](https://github.com/tastejs/todomvc), but
 todo apps are over done and pokemon is so :fire: right now.
 
 
