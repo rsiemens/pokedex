@@ -1,15 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router';
+import Actions from '../actions/actions';
 
 
 const PokemonView = React.createClass({
+
+  pokemon: null,
+
   /**
    * Get an obect representing a pokemon, queried by a pokemons number
-   * @param {String} number Number string - ex. '001' (Bulbasaur)
-   * @return {Object|Boolean} If no pokemon match is found will return
+   * @param {string} number Number string - ex. '001' (Bulbasaur)
+   * @return {object|boolean} If no pokemon match is found will return
    *   false, otherwise return pokemon object.
    */
-  getPokemon (number) {
+  _getPokemon (number) {
     var pokemon = this.props.pokemon;
 
     for (let i = 0; i < pokemon.length; i++) {
@@ -19,9 +23,21 @@ const PokemonView = React.createClass({
     }
     return false;
   },
+
+  /**
+   * Create a catch action which will be sent to the dispatcher ultimately
+   * causing a setState trigger in the App component.
+   */
+  _toggleCaught () {
+    Actions.catchAction(this.pokemon.Name);
+  },
+
+  componentDidMount () {
+    this.pokemon = this._getPokemon(this.props.params.number);
+  },
+
   render () {
-    var pokemon = this.getPokemon(this.props.params.number);
-    if (!pokemon) {
+    if (!this.pokemon) {
       return (
         <div>
           <Link to="/">Back</Link>
@@ -29,14 +45,17 @@ const PokemonView = React.createClass({
         </div>
       );
     }
+
     return (
       <div>
         <Link to="/">Back</Link>
-        <img className='pokemon-img' src={'img/pokemon/' + pokemon.Number + '.gif'} />
-        <p>{pokemon.Number} {pokemon.Name}</p>
+        <img className='pokemon-img' src={'img/pokemon/' + this.pokemon.Number + '.gif'} />
+        <p>{this.pokemon.Number} {this.pokemon.Name}</p>
+        <input type="checkbox" checked={this.pokemon.Caught} onChange={this._toggleCaught} />
       </div>
     );
-  }
+  },
+
 });
 
-export {PokemonView};
+export default PokemonView;

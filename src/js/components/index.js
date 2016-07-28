@@ -1,4 +1,5 @@
-import {ListView} from './ListView';
-import {PokemonView} from './PokemonView';
+import App from './App';
+import ListView from './ListView';
+import PokemonView from './PokemonView';
 
-export {ListView, PokemonView};
+export {App, ListView, PokemonView};

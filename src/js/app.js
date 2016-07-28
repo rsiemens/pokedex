@@ -2,26 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 
-import pokemon from './stores/pokemon';
-import {ListView, PokemonView} from './components';
+import {App, ListView, PokemonView} from './components';
 
-
-const App = React.createClass({
-  render () {
-    return (
-      React.cloneElement(
-        this.props.children,
-        {pokemon: pokemon}
-      )
-    );
-  }
-});
 
 /**
  * Kickoff our app and render to the DOM
  */
 function startApp () {
   var el = document.getElementById('app');
+
   ReactDOM.render((
     <Router history={hashHistory}>
       <Route path='/' component={App} >
