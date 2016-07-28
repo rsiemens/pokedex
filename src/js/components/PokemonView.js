@@ -17,16 +17,16 @@ const PokemonView = React.createClass({
         return pokemon[i]
       }
     }
-
     return false;
   },
-
   render () {
     var pokemon = this.getPokemon(this.props.params.number);
     if (!pokemon) {
       return (
-
-        <div>No match for {this.props.params.number}</div>
+        <div>
+          <Link to="/">Back</Link>
+          <div>No match for {this.props.params.number}</div>
+        </div>
       );
     }
     return (

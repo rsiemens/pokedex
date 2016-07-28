@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 
 import pokemon from './stores/pokemon';
-import {ListView} from './components/ListView';
-import {PokemonView} from './components/PokemonView';
+import {ListView, PokemonView} from './components';
 
 
 const App = React.createClass({
@@ -17,7 +16,6 @@ const App = React.createClass({
     );
   }
 });
-
 
 /**
  * Kickoff our app and render to the DOM
@@ -35,7 +33,8 @@ function startApp () {
 }
 
 if (window.cordova) {  // we're on a device
-
+  // provide some easier debugging on devices
+  // TODO: move this into a logging system
   window.onerror = function (errorMsg, url, lineNumber) {
     alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber);
   };

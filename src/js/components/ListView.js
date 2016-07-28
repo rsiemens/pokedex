@@ -15,10 +15,8 @@ const ListView = React.createClass({
         results.push(<ListItem key={poke.Number} poke={poke} />);
       }
     });
-
     return results;
   },
-
   /**
    * Handler for input onChange event. Will update `state.searchQuery` with the
    * the input value.
@@ -27,11 +25,9 @@ const ListView = React.createClass({
   searchHandler (evt) {
     this.setState({searchQuery: evt.target.value.toLowerCase()});
   },
-
   getInitialState () {
     return {searchQuery: ''};
   },
-
   render () {
     return (
       <div>
