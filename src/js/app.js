@@ -46,7 +46,7 @@ if (window.cordova) {  // we're on a device
    * you can safely make calls to Cordova APIs.
    */
   document.addEventListener('deviceready', () => {
-		startApp();
+    startApp();
   }, false);
 } else {  // browser
   startApp();
