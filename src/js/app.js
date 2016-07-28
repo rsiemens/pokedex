@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, Link, browserHistory} from 'react-router';
+import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 import $ from 'jquery';
 
 import pokemon from './stores/pokemon';
 import {ListView} from './components/ListView';
+import {PokemonView} from './components/PokemonView';
 
 
 const App = React.createClass({
   render () {
     return (
-      <ListView pokemon={pokemon} />
+      React.cloneElement(
+        this.props.children,
+        {pokemon: pokemon}
+      )
     );
   }
 });
@@ -22,8 +26,11 @@ const App = React.createClass({
 function startApp () {
   var el = document.getElementById('app');
   ReactDOM.render((
-    <Router history={browserHistory}>
-      <Route path='/' component={App} />
+    <Router history={hashHistory}>
+      <Route path='/' component={App} >
+        <IndexRoute component={ListView} />
+        <Route path="pokemon/:number" component={PokemonView} />
+      </Route>
     </Router>
   ), el);
 }

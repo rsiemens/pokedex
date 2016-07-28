@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 
 const ListView = React.createClass({
@@ -48,10 +49,10 @@ const ListView = React.createClass({
 const ListItem = React.createClass({
   render () {
     return (
-      <div className='pokemon-list-item'>
+      <Link to={"pokemon/" + this.props.poke.Number}>
         <img className='pokemon-img' src={'img/pokemon/' + this.props.poke.Number + '.gif'} />
         <p>{this.props.poke.Number} {this.props.poke.Name}</p>
-      </div>
+      </Link>
     );
   }
 });
