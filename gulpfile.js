@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var connect = require('gulp-connect');
-var uglify = require('gulp-uglify');
 var webpack = require('webpack-stream');
 var del = require('del');
 

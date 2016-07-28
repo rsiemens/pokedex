@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
-import $ from 'jquery';
 
 import pokemon from './stores/pokemon';
 import {ListView} from './components/ListView';
