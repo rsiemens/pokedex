@@ -36,9 +36,13 @@ const ListView = React.createClass({
 
   render () {
     return (
-      <div>
+      <div className="pokemon-list-container">
         <div className='search-bar'>
-          <input type='text' onChange={this._searchHandler} />
+          <input
+            type='text'
+            onChange={this._searchHandler}
+            placeholder="Search"
+          />
         </div>
         <div className='pokemon-list'>
           {this.generateList()}
@@ -53,12 +57,15 @@ const ListView = React.createClass({
 const ListItem = React.createClass({
 
   render () {
-    var caught = this.props.poke.Caught ? 'Yes' : 'No';
+    var caught = this.props.poke.Caught;
+    var mainType = this.props.poke['Type I'][0].toLowerCase();
 
     return (
       <Link to={"pokemon/" + this.props.poke.Number}>
-        <img className='pokemon-img' src={'img/pokemon/' + this.props.poke.Number + '.gif'} />
-        <p>{this.props.poke.Number} {this.props.poke.Name} Caught: {caught}</p>
+        <div className={"pokemon-list-item " + "type-" + mainType}>
+          <img className='pokemon-img' src={'img/pokemon/' + this.props.poke.Number + '.gif'} />
+          <p>#{this.props.poke.Number} {this.props.poke.Name} <span className={caught ? 'caught-yes' : 'caught-no' }>Caught</span></p>
+        </div>
       </Link>
     );
   }

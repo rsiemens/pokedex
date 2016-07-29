@@ -1,0 +1,126 @@
+body {
+    margin: 0 auto;
+    max-width: 30em;
+    font-family: "Helvetica", "Arial", sans-serif;
+    line-height: 1.5;
+    color: #555;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+    color: #000;
+}
+
+span {
+    border: 0.5px solid #000;
+    border-radius: 10%;
+    padding: 2px 2px;
+    font-size: 12px;
+    margin: 0 1px;
+    color: #fff;
+}
+
+.pokemon-list-item,
+.search-bar {
+    padding: 0.5em 0;
+}
+
+.pokemon-list-item {
+    border: 1px solid black;
+}
+
+.search-bar input {
+    margin: 0 auto;
+    display: block;
+    padding: 0.3em;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;
+    outline: none;
+}
+
+
+.caught-yes {
+    background: #32e032;
+}
+.caught-no {
+    background: #ef0b0b;
+}
+
+.type-grass {
+    background: rgb(120, 200, 80);
+}
+
+.type-poison {
+    background: rgb(160, 64, 160);
+}
+
+.type-water {
+    background: rgb(104, 144, 240);
+}
+
+.type-fire {
+    background: rgb(240, 129, 49);
+}
+
+.type-flying {
+    background: rgb(168, 144, 240);
+}
+
+.type-bug {
+    background: rgb(168, 184, 32);
+}
+
+.type-normal {
+    background: rgb(168, 168, 120);
+}
+
+.type-electric {
+    background: rgb(248, 208, 48);
+}
+
+.type-ground {
+    background: rgb(224, 192, 104);
+}
+
+.type-fairy {
+    background: rgb(128, 153, 172);
+}
+
+.type-fighting {
+    background: rgb(192, 48, 40);
+}
+
+.type-psychic {
+    background: rgb(248, 88, 136);
+}
+
+.type-rock {
+    background: rgb(184, 160, 56);
+}
+
+.type-steel {
+    background: rgb(184, 184, 208);
+}
+
+.type-ice {
+    background: rgb(152, 216, 216);
+}
+
+.type-dragon {
+    background: rgb(112, 56, 248);
+}
+
+.type-dark {
+    background: rgb(112, 88, 72);
+}
+
+.type-ghost {
+    background: rgb(112, 88, 152);
+}

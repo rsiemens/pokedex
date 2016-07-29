@@ -32,6 +32,21 @@ const PokemonView = React.createClass({
     Actions.catchAction(this.pokemon.Name);
   },
 
+  type () {
+    var typeI = this.pokemon['Type I'] || [];
+    var typeII = this.pokemon['Type II'] || [];
+
+    return typeI.concat(typeII).map((type, i) => {
+      return (<span key={i} className={'type-' + type.toLowerCase()}>{type}</span>)
+    });
+  },
+
+  weaknesses () {
+    return this.pokemon.Weaknesses.map((weakness, i) => {
+      return (<span key={i} className={'type-' + weakness.toLowerCase()}>{weakness}</span>);
+    });
+  },
+
   componentDidMount () {
     this.pokemon = this._getPokemon(this.props.params.number);
   },
@@ -47,11 +62,24 @@ const PokemonView = React.createClass({
     }
 
     return (
-      <div>
+      <div className="pokemon-profile-container">
         <Link to="/">Back</Link>
-        <img className='pokemon-img' src={'img/pokemon/' + this.pokemon.Number + '.gif'} />
-        <p>{this.pokemon.Number} {this.pokemon.Name}</p>
-        <input type="checkbox" checked={this.pokemon.Caught} onChange={this._toggleCaught} />
+        <div className="pokemon-profile">
+          <img className='pokemon-img' src={'img/pokemon/' + this.pokemon.Number + '.gif'} />
+          <p>#{this.pokemon.Number} {this.pokemon.Name}</p>
+          <p>{this.pokemon.Classification}</p>
+          <div>
+            Type: {this.type()}
+          </div>
+          <div>
+            Weaknesses: {this.weaknesses()}
+          </div>
+        </div>
+        Mark caught: <input
+                      type="checkbox"
+                      checked={this.pokemon.Caught}
+                      onChange={this._toggleCaught}
+                     />
       </div>
     );
   },
