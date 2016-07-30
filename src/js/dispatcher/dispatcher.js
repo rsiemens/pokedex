@@ -14,10 +14,10 @@ const Dispatcher = {
     return _callbacks.push(callback) - 1; // return the index of the callback  
   },
 
-
   /**
    * Dispatch an action payload to all the stores via registered callbacks.
-   * This is a simple implementation which is blocking (not using promises/async).
+   * This is a simple implementation which is blocking. A better implementation
+   * would use promises.
    * @param {object} action The action payload.
    */
   dispatch (action) {

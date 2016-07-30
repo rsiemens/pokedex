@@ -56,7 +56,10 @@ const PokemonView = React.createClass({
       return (
         <div>
           <Link to="/">Back</Link>
-          <div>No match for {this.props.params.number}</div>
+          <div className="pokemon-profile">
+            <img className='pokemon-img' src={'img/pokemon/132' + '.gif'} />
+            <div>Something went wrong</div>
+          </div>
         </div>
       );
     }

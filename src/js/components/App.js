@@ -22,7 +22,6 @@ const App = React.createClass({
    * Invoked when the dispatcher emits a Catch change.
    */
   _onCaught () {
-    console.log('updating state');
     this.setState({pokemon: PokemonStore.getAll()});
   },
 

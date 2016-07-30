@@ -2,6 +2,7 @@ body {
     margin: 0 auto;
     max-width: 30em;
     font-family: "Helvetica", "Arial", sans-serif;
+    background: #c7c7c7;
     line-height: 1.5;
     color: #555;
     text-align: center;
@@ -18,11 +19,15 @@ p {
 
 span {
     border: 0.5px solid #000;
-    border-radius: 10%;
-    padding: 2px 2px;
+    padding: 2px 4px;
     font-size: 12px;
     margin: 0 1px;
     color: #fff;
+}
+
+.pokemon-profile-container,
+.pokemon-profile {
+    margin: 3em auto;
 }
 
 .pokemon-list-item,
@@ -31,7 +36,29 @@ span {
 }
 
 .pokemon-list-item {
-    border: 1px solid black;
+    border-top: 0.5px solid #000;
+    transition: box-shadow 0.3s ease, margin 0.5s ease, border 0.5s ease;
+    position: relative;
+}
+
+.pokemon-list-item:hover {
+    border: none;
+    margin: 1em auto;
+    box-shadow: -2px 3px 20px 4px #a1a1a1;
+}
+
+.pokemon-number,
+.pokemon-avatar {
+    display: inline-block;
+}
+
+.pokemon-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    background: #000;
+    color: #fff;
 }
 
 .search-bar input {
@@ -39,12 +66,13 @@ span {
     display: block;
     padding: 0.3em;
     width: 100%;
+    background: #c7c7c7;
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid grey;
     outline: none;
+    border-radius: 0%;
 }
-
 
 .caught-yes {
     background: #32e032;

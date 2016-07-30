@@ -61,10 +61,13 @@ const ListItem = React.createClass({
     var mainType = this.props.poke['Type I'][0].toLowerCase();
 
     return (
-      <Link to={"pokemon/" + this.props.poke.Number}>
+      <Link to={"pokemon/" + this.props.poke.Number} className="pokemon-link">
         <div className={"pokemon-list-item " + "type-" + mainType}>
-          <img className='pokemon-img' src={'img/pokemon/' + this.props.poke.Number + '.gif'} />
-          <p>#{this.props.poke.Number} {this.props.poke.Name} <span className={caught ? 'caught-yes' : 'caught-no' }>Caught</span></p>
+          <div className="pokemon-number">#{this.props.poke.Number}</div>
+          <div className="pokemon-avatar">
+            <img className='pokemon-img' src={'img/pokemon/' + this.props.poke.Number + '.gif'} />
+            <p>{this.props.poke.Name} <span className={caught ? 'caught-yes' : 'caught-no' }>Caught</span></p>
+          </div>
         </div>
       </Link>
     );
