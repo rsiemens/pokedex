@@ -24,6 +24,22 @@ const PokemonView = React.createClass({
     return false;
   },
 
+  getEvolutions () {
+    var evos = this.pokemon['Next evolution(s)'];
+    if (evos && evos.length) {
+      return evos.map(evo => {
+        return (
+          <Link key={evo.Number} to={'pokemon/' + evo.Number} >
+            <div className="pokemon-evolution">
+              <img className='pokemon-img' src={'img/pokemon/' + evo.Number + '.gif'} />
+              <p>#{evo.Number} {evo.Name}</p>
+            </div>
+          </Link>
+        );
+      });
+    }
+  },
+
   /**
    * Create a catch action which will be sent to the dispatcher ultimately
    * causing a setState trigger in the App component.
@@ -55,8 +71,8 @@ const PokemonView = React.createClass({
     if (!this.pokemon) {
       return (
         <div>
-          <Link to="/">Back</Link>
-          <div className="pokemon-profile">
+          <Link to='/'>Back</Link>
+          <div className='pokemon-profile'>
             <img className='pokemon-img' src={'img/pokemon/132' + '.gif'} />
             <div>Something went wrong</div>
           </div>
@@ -65,24 +81,29 @@ const PokemonView = React.createClass({
     }
 
     return (
-      <div className="pokemon-profile-container">
-        <Link to="/">Back</Link>
-        <div className="pokemon-profile">
+      <div className='pokemon-profile-container'>
+        <Link to='/'>Back</Link>
+        <div className='pokemon-profile'>
           <img className='pokemon-img' src={'img/pokemon/' + this.pokemon.Number + '.gif'} />
           <p>#{this.pokemon.Number} {this.pokemon.Name}</p>
           <p>{this.pokemon.Classification}</p>
+          <p>Weight: {this.pokemon.Weight} Height: {this.pokemon.Height}</p>
           <div>
             Type: {this.type()}
           </div>
           <div>
             Weaknesses: {this.weaknesses()}
           </div>
+          Mark caught: <input
+                        type='checkbox'
+                        checked={this.pokemon.Caught}
+                        onChange={this._toggleCaught}
+                       />
+          <div className='pokemon-evolutions'>
+            <p>Evolutions</p>
+            {this.getEvolutions()} 
+          </div>
         </div>
-        Mark caught: <input
-                      type="checkbox"
-                      checked={this.pokemon.Caught}
-                      onChange={this._toggleCaught}
-                     />
       </div>
     );
   },

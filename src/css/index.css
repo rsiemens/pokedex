@@ -30,6 +30,15 @@ span {
     margin: 3em auto;
 }
 
+.pokemon-evolutions {
+    margin: 1em auto;
+}
+
+.pokemon-evolution {
+    display: inline-block;
+    margin : 1em 1em;
+}
+
 .pokemon-list-item,
 .search-bar {
     padding: 0.5em 0;
