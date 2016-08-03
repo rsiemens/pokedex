@@ -29,7 +29,7 @@ const PokemonView = React.createClass({
     if (evos && evos.length) {
       return evos.map(evo => {
         return (
-          <Link key={evo.Number} to={'pokemon/' + evo.Number} >
+          <Link key={evo.Number} to={'/pokemon/' + evo.Number} >
             <div className="pokemon-evolution">
               <img className='pokemon-img' src={'img/pokemon/' + evo.Number + '.gif'} />
               <p>#{evo.Number} {evo.Name}</p>
@@ -85,22 +85,24 @@ const PokemonView = React.createClass({
         <Link to='/'>Back</Link>
         <div className='pokemon-profile'>
           <img className='pokemon-img' src={'img/pokemon/' + this.pokemon.Number + '.gif'} />
-          <p>#{this.pokemon.Number} {this.pokemon.Name}</p>
-          <p>{this.pokemon.Classification}</p>
-          <p>Weight: {this.pokemon.Weight} Height: {this.pokemon.Height}</p>
-          <div>
-            Type: {this.type()}
+          <h2>#{this.pokemon.Number} {this.pokemon.Name}</h2>
+          <h3>{this.pokemon.Classification}</h3>
+          <div className='pokemon-info'>
+            <p>Weight: {this.pokemon.Weight} Height: {this.pokemon.Height}</p>
+            <div>
+              Type: {this.type()}
+            </div>
+            <div>
+              Weaknesses: {this.weaknesses()}
+            </div>
+            Mark caught: <input
+                          type='checkbox'
+                          checked={this.pokemon.Caught}
+                          onChange={this._toggleCaught}
+                         />
           </div>
-          <div>
-            Weaknesses: {this.weaknesses()}
-          </div>
-          Mark caught: <input
-                        type='checkbox'
-                        checked={this.pokemon.Caught}
-                        onChange={this._toggleCaught}
-                       />
           <div className='pokemon-evolutions'>
-            <p>Evolutions</p>
+            <h3>Evolutions</h3>
             {this.getEvolutions()} 
           </div>
         </div>

@@ -8,13 +8,17 @@ body {
     text-align: center;
 }
 
+h1, h2, h3 {
+    margin: 0;
+}
+
 a {
     text-decoration: none;
 }
 
 p {
     margin: 0;
-    color: #000;
+    color: #555;
 }
 
 span {
@@ -39,19 +43,22 @@ span {
     margin : 1em 1em;
 }
 
+.pokemon-info {
+    margin-top: 1em;
+}
+
 .pokemon-list-item,
 .search-bar {
     padding: 0.5em 0;
 }
 
 .pokemon-list-item {
-    border-top: 0.5px solid #000;
-    transition: box-shadow 0.3s ease, margin 0.5s ease, border 0.5s ease;
+    transition: box-shadow 0.3s ease, margin 0.5s ease;
+    margin: 0.1em auto;
     position: relative;
 }
 
 .pokemon-list-item:hover {
-    border: none;
     margin: 1em auto;
     box-shadow: -2px 3px 20px 4px #a1a1a1;
 }
@@ -76,6 +83,7 @@ span {
     padding: 0.3em;
     width: 100%;
     background: #c7c7c7;
+    font-size: 20px;
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid grey;
