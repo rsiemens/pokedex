@@ -1,11 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router';
 import Actions from '../actions/actions';
+import PokemonEvolutions from './PokemonEvolutions';
 
 
 const PokemonView = React.createClass({
-
-  pokemon: null,
 
   /**
    * Get an obect representing a pokemon, queried by a pokemons number
@@ -13,7 +12,7 @@ const PokemonView = React.createClass({
    * @return {object|boolean} If no pokemon match is found will return
    *   false, otherwise return pokemon object.
    */
-  _getPokemon (number) {
+  getPokemon (number) {
     var pokemon = this.props.pokemon;
 
     for (let i = 0; i < pokemon.length; i++) {
@@ -24,33 +23,17 @@ const PokemonView = React.createClass({
     return false;
   },
 
-  getEvolutions () {
-    var evos = this.pokemon['Next evolution(s)'];
-    if (evos && evos.length) {
-      return evos.map(evo => {
-        return (
-          <Link key={evo.Number} to={'/pokemon/' + evo.Number} >
-            <div className="pokemon-evolution">
-              <img className='pokemon-img' src={'img/pokemon/' + evo.Number + '.gif'} />
-              <p>#{evo.Number} {evo.Name}</p>
-            </div>
-          </Link>
-        );
-      });
-    }
-  },
-
   /**
    * Create a catch action which will be sent to the dispatcher ultimately
    * causing a setState trigger in the App component.
    */
   _toggleCaught () {
-    Actions.catchAction(this.pokemon.Name);
+    Actions.catchAction(this.state.pokemon.Name);
   },
 
   type () {
-    var typeI = this.pokemon['Type I'] || [];
-    var typeII = this.pokemon['Type II'] || [];
+    var typeI = this.state.pokemon['Type I'] || [];
+    var typeII = this.state.pokemon['Type II'] || [];
 
     return typeI.concat(typeII).map((type, i) => {
       return (<span key={i} className={'type-' + type.toLowerCase()}>{type}</span>)
@@ -58,17 +41,21 @@ const PokemonView = React.createClass({
   },
 
   weaknesses () {
-    return this.pokemon.Weaknesses.map((weakness, i) => {
+    return this.state.pokemon.Weaknesses.map((weakness, i) => {
       return (<span key={i} className={'type-' + weakness.toLowerCase()}>{weakness}</span>);
     });
   },
 
-  componentDidMount () {
-    this.pokemon = this._getPokemon(this.props.params.number);
+  evolutionHandler (number) {
+    this.setState({ pokemon: this.getPokemon(number) });
+  },
+
+  getInitialState () {
+    return { pokemon: this.getPokemon(this.props.params.number) };
   },
 
   render () {
-    if (!this.pokemon) {
+    if (!this.state.pokemon) {
       return (
         <div>
           <Link to='/'>Back</Link>
@@ -84,11 +71,11 @@ const PokemonView = React.createClass({
       <div className='pokemon-profile-container'>
         <Link to='/'>Back</Link>
         <div className='pokemon-profile'>
-          <img className='pokemon-img' src={'img/pokemon/' + this.pokemon.Number + '.gif'} />
-          <h2>#{this.pokemon.Number} {this.pokemon.Name}</h2>
-          <h3>{this.pokemon.Classification}</h3>
+          <img className='pokemon-img' src={'img/pokemon/' + this.state.pokemon.Number + '.gif'} />
+          <h2>#{this.state.pokemon.Number} {this.state.pokemon.Name}</h2>
+          <h3>{this.state.pokemon.Classification}</h3>
           <div className='pokemon-info'>
-            <p>Weight: {this.pokemon.Weight} Height: {this.pokemon.Height}</p>
+            <p>Weight: {this.state.pokemon.Weight} Height: {this.state.pokemon.Height}</p>
             <div>
               Type: {this.type()}
             </div>
@@ -97,14 +84,11 @@ const PokemonView = React.createClass({
             </div>
             Mark caught: <input
                           type='checkbox'
-                          checked={this.pokemon.Caught}
+                          checked={this.state.pokemon.Caught}
                           onChange={this._toggleCaught}
                          />
           </div>
-          <div className='pokemon-evolutions'>
-            <h3>Evolutions</h3>
-            {this.getEvolutions()} 
-          </div>
+          <PokemonEvolutions evolutionHandler={this.evolutionHandler} pokemon={this.state.pokemon} />
         </div>
       </div>
     );
@@ -112,4 +96,4 @@ const PokemonView = React.createClass({
 
 });
 
-export default PokemonView;
+export default PokemonView

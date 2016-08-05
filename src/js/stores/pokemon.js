@@ -23,6 +23,12 @@ function setCaught(pokemonName) {
   });
 }
 
+function emitCatch () {
+  _listeners.forEach(listener => {
+    listener.callback()
+  });
+}
+
 
 const PokemonStore = {
 
@@ -47,11 +53,6 @@ const PokemonStore = {
     });
   },
 
-  emitCatch () {
-    _listeners.forEach(listener => {
-      listener.callback()
-    });
-  }
 };
 
 
@@ -64,7 +65,7 @@ AppDispatcher.register(action => {
   switch(action.action.actionType) {
     case 'MARK_CAUGHT':
       setCaught(action.action.pokemonName.toLowerCase());
-      PokemonStore.emitCatch();
+      emitCatch();
       break;
 
     default:
