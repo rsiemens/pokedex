@@ -6,8 +6,8 @@ todo apps are over done and pokemon is so :fire: right now.
 
 
 **Completed**
-- [ ] React (in progress)
-- [ ] Ember
+- [x] React (https://rsiemens.github.io/pokedex/pokedex-react/)
+- [ ] Ember (in progress)
 - [ ] Angular 2
 - [ ] Polymer
 
