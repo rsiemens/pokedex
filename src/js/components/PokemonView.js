@@ -82,11 +82,13 @@ const PokemonView = React.createClass({
             <div>
               Weaknesses: {this.weaknesses()}
             </div>
-            Mark caught: <input
-                          type='checkbox'
-                          checked={this.state.pokemon.Caught}
-                          onChange={this._toggleCaught}
-                         />
+            <div style={{display: this.state.pokemon.Caught ? 'none' : 'intial'}}>
+              Mark caught: <input
+                            type='checkbox'
+                            checked={this.state.pokemon.Caught}
+                            onChange={this._toggleCaught}
+                           />
+            </div>
           </div>
           <PokemonEvolutions evolutionHandler={this.evolutionHandler} pokemon={this.state.pokemon} />
         </div>
