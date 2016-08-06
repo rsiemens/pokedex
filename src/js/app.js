@@ -22,6 +22,7 @@ function startApp () {
 }
 
 if (window.cordova) {  // we're on a device
+  
   // provide some easier debugging on devices
   // TODO: move this into a logging system
   window.onerror = function (errorMsg, url, lineNumber) {
@@ -29,13 +30,29 @@ if (window.cordova) {  // we're on a device
   };
 
   /*
-   * MAIN EVENT LISTENER FOR CORDOVA
    * This event fires once cordova has fully loaded. Once this event has fired
    * you can safely make calls to Cordova APIs.
    */
   document.addEventListener('deviceready', () => {
     startApp();
   }, false);
+
 } else {  // browser
+
   startApp();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js', {scope: '/'}).then(registration => {
+      var banner = document.getElementById('offline-banner');
+      banner.style.display = 'block';
+
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, 5000);
+
+    }).catch(err => {
+      console.log('registration failed: ', err);
+    });
+  }
+
 }

@@ -22,11 +22,15 @@ gulp.task('scripts', () => {
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('./www/js/'));
 });
+gulp.task('serviceWorker', () => {
+  return gulp.src('./src/sw.js')
+    .pipe(gulp.dest('./www/'));
+});
 gulp.task('watch', ['build'], () => {
   gulp.watch('src/*.html', ['html']); 
   gulp.watch('src/img/**', ['images']); 
   gulp.watch('src/css/*.css', ['css']); 
-  gulp.watch('src/js/**/*.js', ['scripts']); 
+  gulp.watch('src/**/**/*.js', ['scripts', 'serviceWorker']);
 });
 gulp.task('serve', () => {
   connect.server({
@@ -38,7 +42,7 @@ gulp.task('serve', () => {
 
 
 // tasks you will actually be running
-gulp.task('build', ['html', 'images', 'css', 'scripts']);
+gulp.task('build', ['html', 'images', 'css', 'scripts', 'serviceWorker']);
 
 gulp.task('clean', () => {
   return del(['./www']);

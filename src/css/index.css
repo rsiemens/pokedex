@@ -29,6 +29,15 @@ span {
     color: #fff;
 }
 
+#offline-banner {
+    width: 100%;
+    margin: 0;
+    padding: 1em 0;
+	color: #fff;
+    background: #5cb85c;
+    display: none;
+}
+
 .pokemon-profile-container,
 .pokemon-profile {
     margin: 3em auto;
