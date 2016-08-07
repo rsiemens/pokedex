@@ -9,6 +9,7 @@ this.addEventListener('install', evt => {
   evt.waitUntil(
     caches.open('v1').then(cache => {
       var cacheFiles = [
+        '/',
         '/index.html',
         '/css/index.css',
         '/js/app.bundle.js'
